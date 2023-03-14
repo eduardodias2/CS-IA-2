@@ -3,7 +3,7 @@ import { AppRoutes } from "./app.routes";
 import { AuthRoutes } from "./auth.routes";
 
 export function Routers () {
-  const authPage = true
+  const authPage = false
   return (
     <BrowserRouter>
     {authPage ? <AuthRoutes/> : <AppRoutes/>}

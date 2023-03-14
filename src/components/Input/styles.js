@@ -10,7 +10,7 @@ export const Container = styled.div`
     border: 0.1rem solid ${({ theme }) => theme.COLORS.BACKGROUND_500};
     border-radius: 100px;
     margin-bottom: 2rem;
-    padding: 0.5rem 1rem;
+    padding: 1rem 1.5rem;
     color: ${({theme}) => theme.COLORS.FONT_100};
     width: 100%;
   }
