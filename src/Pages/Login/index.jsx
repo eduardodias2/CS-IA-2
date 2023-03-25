@@ -11,9 +11,9 @@ export function Login () {
     <Input label="Email: " type="email" placeholder="example@example.com" name="email" autocomplete="email" id="user-email"/>
     <Input label="Password: " type="password" placeholder="********" name="password" autocomplete="password" id="user-password"/>
     <Button type="submit" form="login-form" name="user-submit" text="Login" method="GET"></Button>
-    <p>Don't have an account? <a href="">Create one now!</a></p>
+    
     </form>
-
+    <p>Don't have an account? <a href="">Create one now!</a></p>
     </Container>
   );
 }

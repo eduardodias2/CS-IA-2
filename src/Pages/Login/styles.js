@@ -27,8 +27,8 @@ export const Container = styled.div`
       text-decoration: none;
       color: ${({theme}) => theme.COLORS.BACKGROUND_E_500};
     }
-    a::hover {
-      background-color: 
+    a:hover {
+      font-weight: bold;
     }
 
     
