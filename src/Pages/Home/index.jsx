@@ -3,8 +3,12 @@ import { Logo } from "../../components/Logo";
 import { Anchors } from "../../components/Anchors";
 import { Note } from "../../components/Note";
 import { Button } from "../../components/Button";
+import { Modal } from "../../components/Modal";
+import { useState } from "react";
 
 export function Home() {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <Container>
       <aside>
@@ -24,7 +28,7 @@ export function Home() {
       <section>
         <header>
           <h1>All notes</h1>
-          <Button text="Add new notes" />
+          <Button text="Add new notes" onClick={()=> setIsOpen(true)} />
         </header>
         <div className="note-wrapper">
           <div className="notes">
@@ -45,6 +49,7 @@ export function Home() {
 
         </div>
       </section>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>
     </Container>
   );
 }

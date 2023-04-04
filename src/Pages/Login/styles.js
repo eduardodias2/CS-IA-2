@@ -17,6 +17,10 @@ export const Container = styled.div`
         width: 50rem;
         margin-top: 3rem;
         text-align: center;
+        > button {
+          width: 13.5rem;
+          margin: auto;
+        }
     }
     p {
       font-size: 1.35rem;
