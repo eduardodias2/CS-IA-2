@@ -15,6 +15,10 @@ export const Container = styled.div`
     width: 100%;
   }
 
+  input:focus {
+    outline: none;
+    border-color: ${({theme}) => theme.COLORS.BACKGROUND_E_700};
+  }
   label {
     font-size: 1.6rem;
     font-weight: 700;

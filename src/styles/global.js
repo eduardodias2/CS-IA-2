@@ -26,4 +26,7 @@ export default createGlobalStyle`
 input:-webkit-autofill{
     -webkit-text-fill-color: ${({ theme }) => theme.COLORS.FONT_100} !important;
 }
+li {
+  list-style-type: none;
+}
 `;
