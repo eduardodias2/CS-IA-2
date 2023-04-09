@@ -19,9 +19,27 @@ export const Container = styled.div`
     outline: none;
     border-color: ${({theme}) => theme.COLORS.BACKGROUND_E_700};
   }
+
   label {
     font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 1rem;
+  }
+
+  textarea {
+    background-color: transparent;
+    border: 0.1rem solid ${({ theme }) => theme.COLORS.BACKGROUND_500};
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    padding: 1rem 1.5rem;
+    color: ${({theme}) => theme.COLORS.FONT_100};
+    width: 50rem;
+    height: 21.5rem;
+    resize: none;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: ${({theme}) => theme.COLORS.BACKGROUND_E_700};
   }
 `;

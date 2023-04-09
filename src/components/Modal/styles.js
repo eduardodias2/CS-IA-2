@@ -9,6 +9,11 @@ export const Overlay = styled.div `
     justify-content: center;
     padding: 0.4rem;
     background-color: #00000050;
+    button {
+        width: 13.5rem;
+        margin-bottom: 0.5rem;
+        
+    }
 `
 export const Panel = styled(Dialog.Panel)`
     display: flex;
@@ -20,12 +25,24 @@ export const Panel = styled(Dialog.Panel)`
     border-radius: 0.4rem;
     padding: 3rem;
     text-align: center;
-`
-
-export const StyledButton = styled(Button)`
-    width: 13.5rem;
+    align-items: center;
 `
 
 export const Title = styled(Dialog.Title)`
     font-size: 2.5em;
+`
+export const InputContainer = styled.div`
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+`
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+`
+
+export const InputTextContainer = styled.div`
+
 `

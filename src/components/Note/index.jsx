@@ -1,10 +1,19 @@
+import { Button } from "../Button";
 import { Container } from "./styles";
 
-export function Note ({noteType}) {
-    return (
-        <Container>
-            <h2>{noteType}</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim dolore alias vitae quis mollitia, hic qui eveniet harum rerum aliquam autem assumenda ducimus magnam vero possimus similique! Minus, corrupti nulla!</p>
-        </Container>
-    )
+export function Note({ title, description, type, video }) {
+  return (
+    <Container>
+      <div>
+        <h2>{type === "video" ? "Video" : title}</h2>
+        <p>{description}</p>
+      </div>
+      {type === "video" && (
+        <Button
+          text="Watch"
+          onClick={() => window.open(video, "_blank").focus()}
+        />
+      )}
+    </Container>
+  );
 }

@@ -7,7 +7,8 @@ import { Modal } from "../../components/Modal";
 import { useState } from "react";
 
 export function Home() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [notes, setNotes] = useState([]);
 
   return (
     <Container>
@@ -28,28 +29,23 @@ export function Home() {
       <section>
         <header>
           <h1>All notes</h1>
-          <Button text="Add new notes" onClick={()=> setIsOpen(true)} />
+          <Button text="Add note" onClick={() => setIsOpen(true)} />
         </header>
         <div className="note-wrapper">
           <div className="notes">
-            <Note noteType="Video" />
-            <Note noteType="Note" />
-            <Note noteType="Video" />
-            <Note noteType="Note" />
-            <Note noteType="Video" />
-            <Note noteType="Note" />
-            <Note noteType="Video" />
-            <Note noteType="Note" />
-            <Note noteType="Note" />
-            <Note noteType="Note" />
-            <Note noteType="Note" />
-            <Note noteType="Note" />
+            {notes.map((note, index) => (
+              <Note
+                key={index}
+                title={note.title}
+                type= {note.type}
+                video= {note.video}
+                description={note.description}
+              />
+            ))}
           </div>
-
-
         </div>
       </section>
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} setNotes={setNotes}/>
     </Container>
   );
 }

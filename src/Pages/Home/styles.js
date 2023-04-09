@@ -65,6 +65,7 @@ export const Container = styled.div`
     padding: 1rem;
     justify-content: center;
     overflow-y: scroll;
+    height: 100%;
   }
   .notes {
     display: grid;

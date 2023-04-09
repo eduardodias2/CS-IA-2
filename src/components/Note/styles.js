@@ -6,4 +6,14 @@ export const Container = styled.div`
   padding: 1rem;
   border: 0.5rem solid ${({theme})=> theme.COLORS.BACKGROUND_700};
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h2 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+  }
 `
