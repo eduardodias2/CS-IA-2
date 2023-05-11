@@ -30,6 +30,7 @@ export const Panel = styled(Dialog.Panel)`
 
 export const Title = styled(Dialog.Title)`
     font-size: 2.5em;
+    padding-bottom: 1rem;
 `
 export const InputContainer = styled.div`
     display: flex;

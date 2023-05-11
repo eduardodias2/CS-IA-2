@@ -48,4 +48,15 @@ export const Label = styled.label`
       -webkit-transition: 0.4s;
     }
   }
+
+  p {
+    font-size: 1.6rem;
+  }
 `;
+
+export const Texts = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 6.3rem;
+  padding-left: 7px;
+`
