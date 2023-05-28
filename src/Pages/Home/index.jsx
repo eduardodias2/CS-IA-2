@@ -5,10 +5,32 @@ import { Note } from "../../components/Note";
 import { Button } from "../../components/Button";
 import { Modal } from "../../components/Modal";
 import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
+import { useAuth } from "../../hooks/auth"; 
+import { api } from "../../services/api";
 
 export function Home() {
+  const {signOut} = useAuth()
   const [isOpen, setIsOpen] = useState(false);
   const [notes, setNotes] = useState([]);
+  
+  async function getNotes() {
+    const token = localStorage.getItem("@visualstudies:token")
+    const response = await api("/notes" , {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token
+      }
+    });
+       
+    setNotes(response.data.data);
+  }
+
+    useEffect(() => {
+      getNotes()
+    }, [])
 
   return (
     <Container>
@@ -24,7 +46,9 @@ export function Home() {
             </li>
           </ul>
         </nav>
-        <Button type="submit" text="Logout" />
+        <Button type="button" text="Logout" onClick={() => {
+          signOut()
+        }}/>
       </aside>
       <section>
         <header>
@@ -37,15 +61,14 @@ export function Home() {
               <Note
                 key={index}
                 title={note.title}
-                type= {note.type}
-                video= {note.video}
+                video={note.url}
                 description={note.description}
               />
-            ))}
+            ))} 
           </div>
         </div>
       </section>
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen} setNotes={setNotes}/>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} setNotes={setNotes} />
     </Container>
   );
 }

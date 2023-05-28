@@ -8,7 +8,7 @@ export function Note({ title, description, type, video }) {
         <h2>{type === "video" ? "Video" : title}</h2>
         <p>{description}</p>
       </div>
-      {type === "video" && (
+      {video &&  (
         <Button
           text="Watch"
           onClick={() => window.open(video, "_blank").focus()}

@@ -20,7 +20,6 @@ export const Panel = styled(Dialog.Panel)`
     flex-direction: column;
     width: 100%;
     max-width: 75rem;
-    height: 50rem;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
     border-radius: 0.4rem;
     padding: 3rem;
