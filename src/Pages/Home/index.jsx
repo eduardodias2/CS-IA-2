@@ -14,7 +14,7 @@ export function Home() {
   const {signOut} = useAuth()
   const [isOpen, setIsOpen] = useState(false);
   const [notes, setNotes] = useState([]);
-  
+  console.log(notes)
   async function getNotes() {
     const token = localStorage.getItem("@visualstudies:token")
     const response = await api("/notes" , {
@@ -63,6 +63,9 @@ export function Home() {
                 title={note.title}
                 video={note.url}
                 description={note.description}
+                id={note.id}
+                setNote={setNotes}
+                notes={notes}
               />
             ))} 
           </div>

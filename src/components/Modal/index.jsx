@@ -16,7 +16,7 @@ export function Modal({ isOpen, setIsOpen, setNotes }) {
     if (type === "note") {
       note.title = title;
     } else {
-      note.video = videoUrl;
+      note.url = videoUrl;
     }
     const token = localStorage.getItem("@visualstudies:token");
     const response = await fetch("http://localhost:3333/notes", {
@@ -32,6 +32,7 @@ export function Modal({ isOpen, setIsOpen, setNotes }) {
         description: description
       })
     });
+    console.log(note)
     setNotes(prev => [...prev, note]);
     setIsOpen(false);
     setTitle("");
@@ -40,7 +41,7 @@ export function Modal({ isOpen, setIsOpen, setNotes }) {
     setVideoUrl("");
     console.log(await response.json());
   }
-  
+
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
       <S.Overlay>
