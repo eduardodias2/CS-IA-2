@@ -3,62 +3,47 @@ import { Button } from "../Button";
 import { Container, HeaderNote } from "./styles";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useState } from "react";
-import { Modal } from "../Modal";
+import { EditModal } from "../EditModal";
 
-export function Note({ title, description, type, video, id, setNote, notes }) {
-  const [updatedTitle, setUpdatedTitle] = useState(title);
-  const [updatedDescription, setUpdatedDescription] = useState(description);
-  const [updatedVideo, setUpdatedVideo] = useState(video);
+export function Note({ setNote, notes, data }) {
   const [isOpen, setIsOpen] = useState(false);
 
   async function handleDelete() {
-    await api.delete(`/notes/${id}`);
-    setNote(notes.filter(note => note.id != id));
-  }
-  async function handleUpdate() {
-    try {
-      await api.put(`/notes/${id}`, {
-        title: updatedTitle,
-        description: updatedDescription,
-        url: updatedVideo,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    await api.delete(`/notes/${data.id}`);
+    setNote(notes.filter(note => note.id != data.id));
   }
 
   const handleButtonClick = () => {
-    handleUpdate();
     setIsOpen(true);
   };
-
+  console.log(data);
   return (
     <Container>
       <HeaderNote>
         <div>
-          <h2>{type === "video" ? "Video" : title}</h2>
-          <p>{description}</p>
+          <h2>{data.type === "video" ? "Video" : data.title}</h2>
+          <p>{data.description}</p>
         </div>
         <div>
           <button onClick={handleButtonClick}>
-            <AiOutlineEdit />
+            <div className="iconWrapper">
+              <AiOutlineEdit />
+            </div>
           </button>
           <button onClick={handleDelete}>
-            <AiOutlineDelete />
+            <div className="iconWrapper">
+              <AiOutlineDelete />
+            </div>
           </button>
         </div>
       </HeaderNote>
-      {video && (
+      {data.url && (
         <Button
           text="Watch"
-          onClick={() => window.open(video, "_blank").focus()}
+          onClick={() => window.open(data.url, "_blank").focus()}
         />
       )}
-      <Modal
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        onSave={handleUpdate}
-      />
+      <EditModal isOpen={isOpen} setIsOpen={setIsOpen} id={data.id} />
     </Container>
   );
 }

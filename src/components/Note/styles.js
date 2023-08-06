@@ -30,6 +30,11 @@ export const HeaderNote = styled.div`
   div > svg {
     height: 2.5rem;
     width: 2.5rem;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
   }
-  button {}
+  button {
+    background: transparent;
+    border: 0.2px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
+    border-radius: 0.5rem;
+  }
 `;

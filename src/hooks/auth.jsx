@@ -30,7 +30,6 @@ function AuthProvider({ children }) {
 
     setData({});
   }
-console.log(data)
 
   useEffect(() => {
     const token = localStorage.getItem("@visualstudies:token");

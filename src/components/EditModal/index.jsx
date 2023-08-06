@@ -1,53 +1,36 @@
+import { Button } from "../Button";
+import { Input } from "../Input";
+import { Switch } from "../Switch";
 import * as S from "./styles";
 import { Dialog } from "@headlessui/react";
-import { Input } from "../Input";
-import { Button } from "../Button";
-import { Switch } from "../Switch";
 import { useState } from "react";
+import { api } from "../../services/api";
 
-export function Modal({ isOpen, setIsOpen, setNotes}) {
+export function EditModal({isOpen, setIsOpen, editNotes, id }) {
   const [title, setTitle] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState("note");
 
-  async function handleCreateNote() {
-    const note = { description, type };
-    if (type === "note") {
-      note.title = title;
-    } else {
-      note.url = videoUrl;
-    }
-    const token = localStorage.getItem("@visualstudies:token");
-    const response = await fetch("http://localhost:3333/notes", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token
-      },
-
-      body: JSON.stringify({
+  async function handleUpdate() {
+    try {
+      await api.put(`/notes/${id}`, {
         title: title,
+        description: description,
         url: videoUrl,
-        description: description
-      })
-    });
-    setNotes(prev => [...prev, note]);
-    setIsOpen(false);
-    setTitle("");
-    setDescription("");
-    setType("note");
-    setVideoUrl("");
-    console.log(await response.json());
+      }); 
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
       <S.Overlay>
         <S.Panel>
-          <S.Title>Create a new note</S.Title>
+          <S.Title>Edit Note</S.Title>
           <Dialog.Description>
-            <form>
+            <form action="">
               <S.InputContainer>
                 <Switch
                   isChecked={type === "video"}
@@ -77,10 +60,9 @@ export function Modal({ isOpen, setIsOpen, setNotes}) {
                   onChange={e => setDescription(e.target.value)}
                 />
               </S.InputTextContainer>
-
               <S.ButtonContainer>
-                <Button text="Create Note" type="submit" onClick={handleCreateNote}/>
-                <Button text="Cancel" onClick={() => setIsOpen(false)} />
+                <Button text="Save Changes" type="submit" onClick={handleUpdate}/>
+                <Button text="Cancel" onClick={() => setIsOpen(false)}/>
               </S.ButtonContainer>
             </form>
           </Dialog.Description>

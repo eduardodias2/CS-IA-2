@@ -67,10 +67,31 @@ export const Container = styled.div`
     overflow-y: scroll;
     height: 100%;
   }
+  p {
+    font-size: 1.6rem;
+    color: ${({ theme }) => theme.COLORS.FONT_200};
+    text-align: center;
+  }
   .notes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     flex-wrap: wrap;
     gap: 1rem 1rem;
+  }
+  .sorting-options {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    label {
+      font-size: 1.6rem;
+      select {
+        margin-left: 1rem;
+        padding: 0.5rem;
+        border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_500};
+        border-radius: 6px;
+        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+        color: ${({ theme }) => theme.COLORS.FONT_200};
+      }
+    }
   }
 `;

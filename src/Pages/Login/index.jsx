@@ -18,7 +18,6 @@ export function Login() {
       password: data.password
     });
   }
-  console.log(data);
   return (
     <Container>
       <Logo />
